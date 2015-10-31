@@ -13,11 +13,13 @@ public class cord {
     double time;
     int x;
     int y;
-    public cord(double time, int x, int y) {
-        
+    public cord(double t, int x1, int y1) {
+        time = t;
+        x = x1;
+        y = y1;
     }
     
-    public void setTime(int t){
+    public void setTime(double t){
         time = t;
     }
     
@@ -29,5 +31,15 @@ public class cord {
         y = y1;
     }
     
+    public double getTime () {
+        return time;
+    }
     
+    public double getX(){
+        return x;
+    }
+    
+    public double getY(){
+        return y;
+    }
 }
