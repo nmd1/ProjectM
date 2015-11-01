@@ -159,6 +159,14 @@ public class keyStrokeConverter {
 		{
 			return 'V';
 		}
+		if(swipes.contains(keystroke.Bbot))
+		{
+			if(swipes.contains(keystroke.Btop))
+			{
+				return 'B';
+			}
+			return 'G';
+		}
 		
 		return ' ';
 	}else{//nehemiah

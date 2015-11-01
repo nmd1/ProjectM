@@ -4,16 +4,8 @@ import java.util.ArrayList;
 
 public class Processing{
 final double timeVarience = 1.2;//TODO
-Output document;
 public Processing()
 {
-	try{
-		
-	
-	document = new Output();
-	}
-	catch(Exception e)
-	{}
 	
 }
 public void inputText(ArrayList<cord> grid)//takes input text and returns char's and 
@@ -23,12 +15,12 @@ public void inputText(ArrayList<cord> grid)//takes input text and returns char's
 	
 	if(grid.size()==1)
 	{
-		document.enterText('.');
+		System.out.println('.');
 		return;
 	}
 	if(grid.size()==2)
 	{
-		document.enterText(',');
+		System.out.println(',');
 		return;
 	}
 	int topRow = 0;
@@ -68,7 +60,7 @@ public void inputText(ArrayList<cord> grid)//takes input text and returns char's
 	}
 	//THIS IS WHERE THE LETTER COMES OUT
 
-	document.enterText((keyStrokeConverter.getLetter(topRow, midTop, midBot, bot, swipes)));//prints the char
+	System.out.println((keyStrokeConverter.getLetter(topRow, midTop, midBot, bot, swipes)));//prints the char
 }
 
 
