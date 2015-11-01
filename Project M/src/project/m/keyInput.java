@@ -23,7 +23,7 @@ public class keyInput {
         empty.setVisible(true);
         //empty.setEnabled(false);
         //empty.setSize(300,300);
-        empty.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        empty.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         
         empty.addKeyListener(new KeyListener() {
             long startTime = 0;
@@ -35,7 +35,13 @@ public class keyInput {
             public void keyTyped(KeyEvent e) {
                 //long startTime1 = System.nanoTime();
                 
+                //END IT SOMEHOW
+                /*
+                if(e.getKeyChar() == ' ' ){
+                    empty.removeAll();
+                }*/
                 //long endTime1 = System.nanoTime();
+                
             }
 
             @Override
@@ -55,21 +61,23 @@ public class keyInput {
                 pressed = false;
                 
                 points.add(new cord(timeE, cordX(c), cordY(c)));
+                System.out.println( "("+timeE+", "+cordX(c)+", " +cordY(c) + ")");
+                
+                
+                
+                
+                cord[] data = new cord[points.size() - 1];
+                int inter = 0;
+                for(cord a : points) {
+                    data[inter] = a;
+                    inter++;
+                }
+                
+                //Processing w = new Processing();
+                //w.inputText(data);
             }
             
-        });
-        
-        
-        //System.out.println("makes what I want");
-        /*while(true){
-        Scanner c = new Scanner(System.in);
-        long startTime = System.nanoTime();
-        String a = c.next();
-        long endTime = System.nanoTime();
-        System.out.println(a);
-        System.out.println(endTime - startTime);*/
-        
-        
+        }); 
         
     }
     
