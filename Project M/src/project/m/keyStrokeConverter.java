@@ -52,7 +52,7 @@ public class keyStrokeConverter {
 			{
 				return 'R';
 			}
-			if(swipes.contains(keystroke.Btop))
+			if(swipes.contains(keystroke.Btop)&&swipes.size()<4)
 			{
 				return 'P';
 			}
@@ -74,12 +74,12 @@ public class keyStrokeConverter {
 			 }
 		}
 		
-		if((swipes.get(0)==keystroke.Forwardslash||swipes.get(0)==keystroke.Unknownslash)&&((swipes.get(0)==keystroke.Backslash)
-				||((swipes.get(1)==keystroke.Unknownslash)&&(swipes.get(0)!=swipes.get(1)))))//M, N, X(posibility)
+		if((swipes.get(0)==keystroke.Forwardslash||swipes.get(0)==keystroke.Unknownslash)&&(((swipes.size()>1)&&(swipes.get(1)==keystroke.Backslash)
+				||((swipes.size()>1)&&((swipes.get(1)==keystroke.Unknownslash))||((swipes.size()>1)&&((swipes.get(1)==keystroke.Forwardslash)))))))//M, N, X(posibility)
 		{
-			if(true)
+			if(swipes.size()==2)
 			{
-				return 'X';
+				return 'M';//X
 			}
 			if(swipes.get(2)==keystroke.Forwardslash||swipes.get(2)==keystroke.Unknownslash)//M or N
 			{
@@ -92,6 +92,7 @@ public class keyStrokeConverter {
 					return 'M';
 				}
 			}
+			return 'M';
 		}
 		if(swipes.contains(keystroke.DashH)&&(swipes.contains(keystroke.Backslash)
 				||swipes.contains(keystroke.Unknownslash)||swipes.contains(keystroke.Forwardslash)))// I or Z or T
@@ -150,10 +151,19 @@ public class keyStrokeConverter {
 			return 'Y';
 		}
 		
+		if(swipes.contains(keystroke.DashL))
+		{
+			return 'L';
+		}
+		if(swipes.size()==2&&swipes.contains(keystroke.Forwardslash))
+		{
+			return 'V';
+		}
+		
 		return ' ';
 	}else{//nehemiah
 		return 50;//nehemiah
-		}//nehemiah
+		}//nehemiahcft
 	
 		}
 
