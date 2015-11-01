@@ -8,7 +8,7 @@ import javax.swing.*;
 
 public class keyInput {
     List<cord> points = new LinkedList<cord>() {};
-    int restTime = 2000;
+    int restTime = 500;
     boolean go = true;
     char keyboard[][] = {
         {'1','2','3','4','5','6','7','8','9','0','-','='},  //k[0][n]
@@ -20,17 +20,17 @@ public class keyInput {
     javax.swing.Timer timer = new javax.swing.Timer((int) restTime, new ActionListener() {
 
                     @Override
-                    
+                    //Timer that sends information to processor
                     public void actionPerformed(ActionEvent e) {
-                        if(go) {
-                        points.add(new cord(0, 0, 0));
-                        cord[] data = new cord[points.size()];
+                        if(go) {//prevents the program from constantly sending information to processing idlely
+                        //points.add(new cord(0, 0, 0));//useless delimiter
+                        cord[] data = new cord[points.size()];//creates array
                         int inter = 0;
                         for(cord a : points) {
-                            System.out.println(a.time);
+                            //System.out.println(a.time);
                             data[inter] = a;
                             inter++;
-                        }
+                        }//writes data from arrayList to array
                         points.removeAll(points);//resets arraylist
                         //Processing w = new Processing();
                         //w.inputText(data); 
@@ -54,42 +54,19 @@ public class keyInput {
         
         empty.addKeyListener(new KeyListener() {
             long startTime = 0;
-            long endTime = 0;
-            long endcharTime = 0;
-            long startcharTime = 0;
-                    
+            long endTime = 0;                  
                     
             char c = 0;
             boolean pressed = false;
             
             @Override
             public void keyTyped(KeyEvent e) {
-                //long startTime1 = System.nanoTime();
-                
-                //END IT SOMEHOW
-                /*
-                if(e.getKeyChar() == ' ' ){
-                    empty.removeAll();
-                }*/
-                //long endTime1 = System.nanoTime();
-                
             }
 
             @Override
             public void keyPressed(KeyEvent e) {
-                endcharTime = System.currentTimeMillis();
-                System.out.println(endcharTime - startcharTime );
-                if(endcharTime - startcharTime > restTime) {
-                    
-                    
-                }
-                /*if(endcharTime - startcharTime > 10000 && (startcharTime != 0 )) {
-                    //after 10 seconds
-                    empty.removeKeyListener(this);
-                    empty.setVisible(false);
-                }*/
                 c = e.getKeyChar();
-                if (!pressed) {
+                if (!pressed) {//prevents the end-start time sequence from resetting constantly
                 startTime = System.currentTimeMillis();
                 pressed = true;
                 }
@@ -107,13 +84,10 @@ public class keyInput {
                 pressed = false;
                 
                 points.add(new cord(timeE, cordX(c), cordY(c)));
-                //System.out.println( "("+timeE+", "+cordX(c)+", " +cordY(c) + ")");
+                System.out.println( "("+timeE+", "+cordX(c)+", " +cordY(c) + ")");
                 
                 timer.start();
-                
-              
 
-                
             }
             
         }); 
