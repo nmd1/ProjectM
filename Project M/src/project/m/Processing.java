@@ -4,8 +4,16 @@ import java.util.ArrayList;
 
 public class Processing{
 final double timeVarience = 1.2;//TODO
+Output document;
 public Processing()
 {
+	try{
+		
+	
+	document = new Output();
+	}
+	catch(Exception e)
+	{}
 	
 }
 public void inputText(ArrayList<cord> grid)//takes input text and returns char's and 
@@ -15,12 +23,12 @@ public void inputText(ArrayList<cord> grid)//takes input text and returns char's
 	
 	if(grid.size()==1)
 	{
-		System.out.println(".");
+		document.enterText('.');
 		return;
 	}
 	if(grid.size()==2)
 	{
-		System.out.println(",");
+		document.enterText(',');
 		return;
 	}
 	int topRow = 0;
@@ -59,7 +67,8 @@ public void inputText(ArrayList<cord> grid)//takes input text and returns char's
 		System.out.println(y);
 	}
 	//THIS IS WHERE THE LETTER COMES OUT
-	System.out.println(keyStrokeConverter.getLetter(topRow, midTop, midBot, bot, swipes));//prints the char
+
+	document.enterText((keyStrokeConverter.getLetter(topRow, midTop, midBot, bot, swipes)));//prints the char
 }
 
 
@@ -1173,6 +1182,10 @@ public void getKeyStroke(ArrayList<keystroke> swipes, ArrayList<cord> grid)
 	}
 	swipes.add(curentSuspected);//adds what it thinks the keystroke is to the array
 	System.out.println(swipes.get(0));
+	if(focus==0)
+	{
+		grid.remove(0);
+	}
 	while(focus>0)
 	{
 		focus--;
@@ -1182,7 +1195,7 @@ public void getKeyStroke(ArrayList<keystroke> swipes, ArrayList<cord> grid)
 	if(grid.size()>1)
 	{
 		shift(grid);
-		//getKeyStroke(swipes,grid);//recirsion//Nehemiah's going to fix it
+		getKeyStroke(swipes,grid);//recirsion//Nehemiah's going to fix it
 	}
 }
 
