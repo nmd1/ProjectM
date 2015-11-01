@@ -9,13 +9,14 @@ import java.io.IOException;
 import java.awt.Desktop;
 
 public class Output {
-	
-	public static void CreateNew()throws Exception 
+	 XWPFDocument document;
+	 FileOutputStream out;
+	public Output()throws Exception 
 	   {
 		   //Blank Document
-		   XWPFDocument document= new XWPFDocument(); 
+		   document= new XWPFDocument(); 
 		   //Write the Document in file system
-		   FileOutputStream out = new FileOutputStream(
+		   out = new FileOutputStream(
 		   new File("ProjectMOut.docx"));
 		   document.write(out);
 		   out.close();
@@ -27,12 +28,25 @@ public class Output {
 			   } catch (IOException ioe) {
 			     ioe.printStackTrace();
 			   }
-		   while(true){
+		 /* while(true){
 		   XWPFParagraph paragraph = document.createParagraph();
 		   XWPFRun run=paragraph.createRun();
 		   run.setText(outputString);
 		   document.write(out);
 		   out.close();
-		   }
-	   }}
+		   }*/
+		   
+	   }
+	public void enterText(char c)
+	{
+		XWPFParagraph paragraph = document.createParagraph();
+		   XWPFRun run=paragraph.createRun();
+		   run.setText(c+"");
+		   try{
+		   document.write(out);
+		   out.close();
+		   }catch(Exception e){}
+	}
+	
+}
 
