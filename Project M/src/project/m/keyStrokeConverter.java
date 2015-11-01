@@ -104,6 +104,8 @@ public class keyStrokeConverter {
 			}
 			if(swipes.size()==2)
 			{
+				if(swipes.contains(keystroke.Backslash))//IMPORTANT, IF THERE IS A J AND T ERROR IT LIES HERE
+					return 'J';
 				return 'T';
 			}
 		}
