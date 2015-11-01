@@ -9,9 +9,9 @@ public class cord {
 	{
 		return 0;
 	}
-	double getT()
+	long getT()
 	{
-		return 0.0;
+		return 0;
 	}
 	
 	void setX(int x)
