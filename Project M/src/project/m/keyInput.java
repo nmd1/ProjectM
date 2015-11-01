@@ -7,7 +7,7 @@ import java.util.Scanner;
 import javax.swing.*;
 
 public class keyInput {
-    List<cord> points = new LinkedList<cord>() {};
+    ArrayList<cord> points = new ArrayList<cord>() {};
     int restTime = 500;
     boolean go = true;
     char keyboard[][] = {
@@ -24,17 +24,27 @@ public class keyInput {
                     public void actionPerformed(ActionEvent e) {
                         if(go) {//prevents the program from constantly sending information to processing idlely
                         //points.add(new cord(0, 0, 0));//useless delimiter
-                        cord[] data = new cord[points.size()];//creates array
+                        
                         int inter = 0;
-                        for(cord a : points) {
-                            //System.out.println(a.time);
-                            data[inter] = a;
-                            inter++;
+                        for(int i = 1; i < points.size(); i++) {
+                        	if(!points.isEmpty()){
+                        		int new1 = i;
+                        		int old1 = i - 1;
+                            	if((points.get(new1).getX() == points.get(old1).getX() &&
+                            		 points.get(new1).getY() == points.get(old1).getY()) ) {
+                            		points.remove(i);
+                            	}
+                            }
+                          
                         }//writes data from arrayList to array
-                        points.removeAll(points);//resets arraylist
-                        //Processing w = new Processing();
-                        //w.inputText(data); 
+                        Processing w = new Processing();
+                        //debug
+                        for(int i = 1; i < points.size(); i++) {
+                        	System.out.println( "("+points.get(i).getTime()+", "+points.get(i).getX()+", " +points.get(i).getY() + ")");
+                        }//enddebug
+                        w.inputText(points); 
                         System.out.println("sent!");
+                        points.removeAll(points);//resets arraylist
                         go = false;
                         }
                     }
@@ -82,9 +92,10 @@ public class keyInput {
                 long timeE = (endTime - startTime);
                 //if(startTime != 0 || endTime != 0) System.out.println("Time: " + ((endTime - startTime) ));
                 pressed = false;
-                
+       
                 points.add(new cord(timeE, cordX(c), cordY(c)));
-                System.out.println( "("+timeE+", "+cordX(c)+", " +cordY(c) + ")");
+ 
+                
                 
                 timer.start();
 

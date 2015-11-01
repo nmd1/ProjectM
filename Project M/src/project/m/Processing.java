@@ -10,6 +10,9 @@ public Processing()
 }
 public void inputText(ArrayList<cord> grid)//takes input text and returns char's and 
 {
+	
+	
+	
 	if(grid.size()==1)
 	{
 		System.out.println(".");
@@ -49,6 +52,13 @@ public void inputText(ArrayList<cord> grid)//takes input text and returns char's
 	ArrayList<keystroke> swipes = new ArrayList<keystroke>();
 	getKeyStroke(swipes,grid);
 	
+	//swipes.remove(0);//nehemiah
+	
+	for(keystroke y:swipes)
+	{
+		System.out.println(y);
+	}
+	//THIS IS WHERE THE LETTER COMES OUT
 	System.out.println(keyStrokeConverter.getLetter(topRow, midTop, midBot, bot, swipes));//prints the char
 }
 
@@ -58,6 +68,8 @@ public void getKeyStroke(ArrayList<keystroke> swipes, ArrayList<cord> grid)
 	boolean inStroke = true;
 	keystroke curentSuspected = keystroke.YSlash;
 	int focus = 0;
+	if(swipes.size()==0)
+		inStroke = true;//change
 	while(inStroke)
 	{
 		focus = 0;
@@ -1156,18 +1168,21 @@ public void getKeyStroke(ArrayList<keystroke> swipes, ArrayList<cord> grid)
 				}
 			}
 		}
+		focus++;
 		break;
 	}
 	swipes.add(curentSuspected);//adds what it thinks the keystroke is to the array
+	System.out.println(swipes.get(0));
 	while(focus>0)
 	{
 		focus--;
 		grid.remove(0);
 	}
-	shift(grid);
+	
 	if(grid.size()>1)
 	{
-		getKeyStroke(swipes,grid);//recirsion
+		shift(grid);
+		//getKeyStroke(swipes,grid);//recirsion//Nehemiah's going to fix it
 	}
 }
 
@@ -1178,6 +1193,8 @@ boolean isApart(cord a, cord b)
 
 public static void shift(ArrayList<cord> cordinates)//shifts to leftmost position
 {
+	if(cordinates.size()>0)
+	{
 	int smallestX = cordinates.get(0).getX();
 	for(cord s:cordinates)//calculates the smallest x value in the array
 	{
@@ -1193,6 +1210,7 @@ public static void shift(ArrayList<cord> cordinates)//shifts to leftmost positio
 		{
 			s.setX(s.getX()-smallestX);
 		}
+	}
 	}
 }
 }

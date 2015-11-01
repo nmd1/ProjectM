@@ -4,15 +4,17 @@ import java.util.ArrayList;
 public class keyStrokeConverter {
 	static char getLetter(int topRowKeys, int midTopRowKeys, int midBotRowKeys, int botRowKeys, ArrayList<keystroke> swipes)
 	{
-		if(swipes.size()>5)//default
-			return ' ';
-		if(swipes.size()==1)
+		if(!swipes.isEmpty()) { //nehemiah
+		//if(()>10)//default
+			//return ' ';
+		if(true)
 		{
 			if(swipes.get(0)==keystroke.UCurve)
 			{
 				return 'L';
 			}
-		}
+		}	
+		
 		if(swipes.get(0)==keystroke.Backslash||swipes.get(0)==keystroke.Forwardslash||swipes.get(0)==keystroke.Unknownslash)//starts with a line
 		{
 			if(swipes.contains(keystroke.Forwardslash)&&swipes.contains(keystroke.Backslash)&&swipes.contains(keystroke.DashM))//capital A
@@ -50,7 +52,7 @@ public class keyStrokeConverter {
 			{
 				return 'R';
 			}
-			if(swipes.contains(keystroke.Btop)&&swipes.size()<=2)
+			if(swipes.contains(keystroke.Btop))
 			{
 				return 'P';
 			}
@@ -60,7 +62,7 @@ public class keyStrokeConverter {
 
 			 if(swipes.contains(keystroke.Bbot)||midTopRowKeys>1||midBotRowKeys>1)
 				 return 'G';
-			 if(swipes.size()==1)
+			 if(true)
 				 return 'C';
 			 if(swipes.contains(keystroke.DCurve))//O or Q
 			 {
@@ -75,13 +77,13 @@ public class keyStrokeConverter {
 		if((swipes.get(0)==keystroke.Forwardslash||swipes.get(0)==keystroke.Unknownslash)&&((swipes.get(0)==keystroke.Backslash)
 				||((swipes.get(1)==keystroke.Unknownslash)&&(swipes.get(0)!=swipes.get(1)))))//M, N, X(posibility)
 		{
-			if(swipes.size()==2)
+			if(true)
 			{
 				return 'X';
 			}
 			if(swipes.get(2)==keystroke.Forwardslash||swipes.get(2)==keystroke.Unknownslash)//M or N
 			{
-				if(swipes.size()==3)
+				if(true)
 				{
 					return 'N';
 				}
@@ -102,17 +104,18 @@ public class keyStrokeConverter {
 				}
 				return 'I';
 			}
-			if(swipes.size()==2)
+			if(true)
 			{
 				if(swipes.contains(keystroke.Backslash))//IMPORTANT, IF THERE IS A J AND T ERROR IT LIES HERE
 					return 'J';
 				return 'T';
 			}
 		}
-		if((swipes.size()>1&&swipes.get(0)==keystroke.Backslash||swipes.get(0)==keystroke.Unknownslash)&&(swipes.get(1)==keystroke.Forwardslash
+		if(!swipes.isEmpty())//nehemiah
+		if((swipes.get(0)==keystroke.Backslash||swipes.get(0)==keystroke.Unknownslash)&&(swipes.get(1)==keystroke.Forwardslash
 				||((swipes.get(1)==keystroke.Unknownslash) && swipes.get(1)!=swipes.get(0))))//V X or W
 		{
-			if(swipes.size()==2)
+			if(true)
 			{
 				if(botRowKeys==1)
 				{
@@ -120,7 +123,7 @@ public class keyStrokeConverter {
 				}
 				return 'X';///IMPORTANT, IF HAVING X AND U MIX UP ERROR THE PROBLEM IS IN THIS LINE, replace x with u
 			}
-			if(swipes.size()==4&&(swipes.get(3)==keystroke.Backslash||swipes.get(3)==keystroke.Unknownslash))
+			if((swipes.get(3)==keystroke.Backslash||swipes.get(3)==keystroke.Unknownslash))
 			{
 				return 'W';
 			}
@@ -131,7 +134,7 @@ public class keyStrokeConverter {
 			return 'U';
 		}
 		
-		if(swipes.size()==2 && swipes.contains(keystroke.DashL)&&(swipes.contains(keystroke.Backslash)
+		if(swipes.contains(keystroke.DashL)&&(swipes.contains(keystroke.Backslash)
 				||swipes.contains(keystroke.Forwardslash)||swipes.contains(keystroke.Unknownslash)))
 		{
 			return 'L';
@@ -148,6 +151,10 @@ public class keyStrokeConverter {
 		}
 		
 		return ' ';
-	}
+	}else{//nehemiah
+		return 50;//nehemiah
+		}//nehemiah
+	
+		}
 
 }
